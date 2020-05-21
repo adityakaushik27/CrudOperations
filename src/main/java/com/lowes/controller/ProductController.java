@@ -1,15 +1,10 @@
 package com.lowes.controller;
 
-import com.lowes.model.Customer;
 import com.lowes.model.Product;
-import com.lowes.service.CustomerService;
 import com.lowes.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @Controller
@@ -36,5 +31,15 @@ public class ProductController {
         return product1;
     }
 
+    @RequestMapping(value = "/product", method = RequestMethod.PUT)
+    public @ResponseBody Product updateProduct(@RequestBody Product product){
+        return productService.updateProduct(product);
+    }
+
+    @RequestMapping(value="/delete/{pid}",method = RequestMethod.DELETE)
+    public @ResponseBody Object deleteProduct(@PathVariable(value="pid") Integer pid){
+        productService.deleteProduct(pid);
+        return null;
+    }
 
 }

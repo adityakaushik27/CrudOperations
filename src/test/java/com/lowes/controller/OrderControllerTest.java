@@ -1,5 +1,6 @@
 package com.lowes.controller;
 
+import com.lowes.model.Customer;
 import com.lowes.model.Order;
 import org.junit.Test;
 import org.springframework.core.ParameterizedTypeReference;

@@ -22,4 +22,15 @@ public class CustomerServiceImpl implements CustomerService {
     public List<Customer> getCustomers() {
         return customerRepository.getCustomers();
     }
+
+    @Override
+    public Customer updateCustomer(Customer customer) {
+        return customerRepository.updateCustomer(customer);
+    }
+
+    @Override
+    public void deleteCustomer(Integer cid) {
+        customerRepository.deleteCustomer(cid);
+
+    }
 }

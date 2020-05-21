@@ -40,5 +40,25 @@ public class CustomerControllerTest {
         }
     }
 
+    @Test(timeout = 30000)
+    public void testUpdateCustomer(){
+        RestTemplate restTemplate = new RestTemplate();
+
+        Customer customer = restTemplate.getForObject("http://localhost:8050/crud_war/customer/1",Customer.class);
+
+        customer.setName(customer.getName()+"Done");
+
+        restTemplate.put("http://localhost:8050/crud_war/customer",customer);
+
+        System.out.println("Customer name: "+ customer.getName());
+    }
+
+    @Test(timeout = 30000)
+    public void testDeleteCustomer(){
+        RestTemplate restTemplate = new RestTemplate();
+
+        restTemplate.delete("http://localhost:8050/crud_war/delete/4",Customer.class);
+        System.out.println("Deleted Customer id: ");
+    }
 
 }

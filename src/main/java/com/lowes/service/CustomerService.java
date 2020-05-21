@@ -8,4 +8,6 @@ public interface CustomerService {
 
     Customer createCustomer(Customer customer);
     List<Customer> getCustomers();
+    Customer updateCustomer(Customer customer);
+    void deleteCustomer(Integer cid);
 }

@@ -22,4 +22,14 @@ public class ProductServiceImpl implements ProductService{
     public List<Product> getProducts() {
         return productRepository.getProducts();
     }
+
+    @Override
+    public Product updateProduct(Product product) {
+        return productRepository.updateProduct(product);
+    }
+
+    @Override
+    public void deleteProduct(Integer pid) {
+        productRepository.deleteProduct(pid);
+    }
 }

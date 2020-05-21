@@ -8,4 +8,8 @@ public interface CustomerRepository {
 
     Customer createCustomer(Customer customer);
     List<Customer> getCustomers();
+
+    void deleteCustomer(Integer cid);
+
+    Customer updateCustomer(Customer customer);
 }

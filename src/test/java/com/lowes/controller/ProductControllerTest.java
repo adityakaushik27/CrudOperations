@@ -19,7 +19,7 @@ public class ProductControllerTest {
         product.setName("Laptop");
 
         Product product1 = restTemplate.postForObject("http://localhost:8040/crud_war/product",product,Product.class);
-        System.out.println("Customer : "+product1.getName()+" added.");
+        System.out.println("Product : "+product1.getName()+" added.");
     }
 
     @Test(timeout = 30000)
@@ -35,7 +35,29 @@ public class ProductControllerTest {
         List<Product> products = productResponse.getBody();
 
         for (Product product:products) {
-            System.out.println("Customer name : "+product.getName());
+            System.out.println("Product name : "+product.getName());
         }
     }
+
+    @Test(timeout = 30000)
+    public void testUpdateProduct(){
+        RestTemplate restTemplate = new RestTemplate();
+
+        Product product = restTemplate.getForObject("http://localhost:8050/crud_war/product/2",Product.class);
+
+        product.setName(product.getName()+"s");
+
+        restTemplate.put("http://localhost:8050/crud_war/product",product);
+
+        System.out.println("Product name: "+ product.getName());
+    }
+
+    @Test(timeout = 30000)
+    public void testDeleteProduct(){
+        RestTemplate restTemplate = new RestTemplate();
+
+        restTemplate.delete("http://localhost:8050/crud_war/delete/5",Product.class);
+        System.out.println("Deleted Product id: ");
+    }
+
 }
